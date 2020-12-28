@@ -20,16 +20,23 @@ public class TaskFour {
 
     public static void main(String[] args) throws InterruptedException {
         LoanApplicationService service = new LoanApplicationService();
-        LoanApplication loanApplication = service.createLoanApplication();
+        LoanApplication loanApplication1 = service.createLoanApplication();
+        LoanApplication loanApplication2 = service.createLoanApplication();
+        LoanApplication loanApplication3 = service.createLoanApplication();
 
         Thread.sleep(3000);
         System.out.println();
 
-        service.updateLoanApplication(loanApplication);
+        service.updateLoanApplication(loanApplication1);
+        service.updateLoanApplication(loanApplication2);
+        service.updateLoanApplication(loanApplication3);
 
+        //todo вот здесь вызывается то число, которое последним передали в сервис выше
         System.out.println();
-        loanApplication = service.getLoanApplication();
-        System.out.println(loanApplication);
+        service.printApplications();
+
+
+
 
 
     }

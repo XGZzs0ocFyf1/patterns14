@@ -2,6 +2,7 @@ package task4;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class LoanApplication {
 
@@ -17,6 +18,22 @@ public class LoanApplication {
 
         this.id = id;
         this.content = content;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public LocalDateTime getUpdated() {
+        return updated;
     }
 
     public void setId(long id) {
@@ -44,5 +61,18 @@ public class LoanApplication {
                 ", created=" + formatter.format(created) +
                 ", updated=" + formatter.format(updated) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LoanApplication that = (LoanApplication) o;
+        return id == that.id && Objects.equals(content, that.content) && Objects.equals(created, that.created);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, content, created);
     }
 }
